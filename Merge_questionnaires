@@ -1,0 +1,28 @@
+clc; clear; close all;
+tic; % measures timelength of script running between tic and toc
+
+
+
+[~,~,OnlineQuest] = xlsread('OutputOnlineQuest.Exp.v1.xls'); % NUM, TEX, RAW en wij willen de text. 
+[~,~, OnlineQuest2] = xlsread('OutputOnlineQuest.FU.v1.xls'); % NUM, TEX, RAW en wij willen de text. 
+[~,~, OnlineQuest3] = xlsread('OutputOnlineQuest.FU2.v1.xls'); % NUM, TEX, RAW en wij willen de text. 
+
+% rows x columns
+Merge = cell(1); % leeg
+%OnlineQuest{:,1} = cellstr(OnlineQuest{:,1});
+%OnlineQuest2 = string(OnlineQuest2);
+
+
+for j = 1:178%size(OnlineQuest,1)
+    for i = 1:114%size(OnlineQuest2,1)
+    
+ %TF = strcmp(OnlineQuest(j,1),OnlineQuest2(i,1));
+ 
+            if ((OnlineQuest(j,1)==OnlineQuest2(i,1)))
+            %Merge (j,1) = OnlineQuest(j,1);
+            Merge (j,1:size(OnlineQuest,2)) = OnlineQuest(j, 1:size(OnlineQuest,2));
+            Merge (j,6:10) = OnlineQuest2(i, 1:5);
+     
+            end
+      end
+end
